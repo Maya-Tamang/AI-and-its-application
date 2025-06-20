@@ -2,11 +2,23 @@ import streamlit as st
 import joblib
 import numpy as np
 import pandas as pd
+import os
 
+# # Load models
+# baseline_model = joblib.load("rf_model.pkl")
+# tuned_model = joblib.load("rf_tuned_model.pkl")
+
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# Paths for both models
+rf_model_path = os.path.join(BASE_DIR, "rf_model.pkl")
+tuned_model_path = os.path.join(BASE_DIR, "rf_tuned_model.pkl")
 
 # Load models
-baseline_model = joblib.load("rf_model.pkl")
-tuned_model = joblib.load("rf_tuned_model.pkl")
+baseline_model = joblib.load(rf_model_path)
+tuned_model = joblib.load(tuned_model_path)
+
 
 # Page config
 st.set_page_config(page_title="MPG Prediction App", layout="centered")
